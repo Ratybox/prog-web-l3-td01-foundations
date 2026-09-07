@@ -7,10 +7,10 @@ IDMC - Université de Lorraine
 
 | Champ | Valeur |
 | --- | --- |
-| Prénom | *à compléter* |
-| Nom | *à compléter* |
-| Adresse mail universitaire | *à compléter* |
-| Groupe de TD | *à compléter* |
+| Prénom | *Radhi* |
+| Nom | *Badache* |
+| Adresse mail universitaire | *radhi.badache6@univ-lorraine.etu* |
+| Groupe de TD | *G3* |
 
 ## Lancer le projet
 
