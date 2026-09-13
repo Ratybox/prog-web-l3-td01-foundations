@@ -43,4 +43,5 @@ export const teams: Array<Team> = [
     title: "Ensemble au-delà",
     memberCount: 55,
   },
+  
 ];
