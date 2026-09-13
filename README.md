@@ -59,9 +59,9 @@ Programmation Web - L3 MIASHS - 2026 / 2027
 3. Pour les mêmes tableaux `teams` et `crewMembers`, les fonctions écrites produisent-elles toujours les mêmes résultats ?
 ```
 
-1. **à compléter**
-2. **à compléter**
-3. **à compléter**
+1. Les trois : `findTeamById`, `getTeamName` et `createCrewCards`. Chacune prend ce qu'on lui passe, calcule un résultat et le renvoie. Aucune n'affiche quoi que ce soit ni ne modifie les données qu'elle lit.
+2. C'est le `console.table(crewCards)` dans `index.ts`. C'est la seule instruction qui sort du calcul pour écrire dans la console. Les fonctions de `crew.ts` se contentent de renvoyer une valeur, c'est `index.ts` qui décide de l'afficher.
+3. Oui. Elles ne dépendent que de ce qu'on leur donne et des tableaux `teams` et `crewMembers` qu'elles lisent. Il n'y a ni hasard, ni date, ni compteur gardé en mémoire entre deux appels. Tant que ces deux tableaux ne changent pas, les mêmes entrées donnent toujours les mêmes résultats.
 
 ### Exercice 4
 

@@ -1,6 +1,8 @@
 import { teams } from "./data/teams";
 import { crewMembers } from "./data/crewMembers";
-import { getDisplayName, hasSkill, isAvailable } from "./crew";
+import { createCrewCards, getDisplayName, hasSkill, isAvailable } from "./crew";
+import type { CrewCard } from "./types/CrewCard";
+
 const team = teams[0];
 
 if (!team) 
@@ -38,3 +40,7 @@ console.table(communicationMembers)
 
 const nomAffichageMembre = crewMembers.map(getDisplayName)
 console.log(nomAffichageMembre)
+
+
+const crewCards: Array<CrewCard> = createCrewCards(crewMembers);
+console.table(crewCards);
