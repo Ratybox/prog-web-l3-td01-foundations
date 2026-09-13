@@ -47,9 +47,9 @@ Programmation Web - L3 MIASHS - 2026 / 2027
 3. Les fonctions `getDisplayName`, `hasSkill` et `isAvailable` modifient-elles leurs arguments ou produisent-elles une nouvelle valeur ?
 ```
 
-1. **à compléter**
-2. **à compléter**
-3. **à compléter**
+1. Je décris la propriété du résultat attendu, pas les étapes du parcours. Je n'écris aucune boucle : c'est `filter` qui parcourt le tableau à ma place, je me contente d'indiquer à quelle condition un élément doit être gardé.
+2. `isAvailable` est le callback passé à `filter` : elle sert de condition et vérifie si un membre est disponible. Je la passe sans parenthèses, je ne l'appelle pas moi-même. C'est `filter` qui l'appelle une fois par membre et qui garde ceux pour lesquels elle renvoie `true`.
+3. Elles produisent une nouvelle valeur. Elles se contentent de lire le `CrewMember` reçu pour en tirer une chaîne ou un booléen, elles ne le modifient jamais.
 
 ### Exercice 3
 

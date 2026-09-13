@@ -1,6 +1,6 @@
 import { teams } from "./data/teams";
 import { crewMembers } from "./data/crewMembers";
-import { getDisplayName } from "./crew";
+import { getDisplayName, hasSkill, isAvailable } from "./crew";
 const team = teams[0];
 
 if (!team) 
@@ -26,3 +26,15 @@ else
 {
     console.log(getDisplayName(trouverAlonzo))
 }
+
+const membresDispo = crewMembers.filter(isAvailable)
+console.table(membresDispo)
+
+
+const communicationMembers = crewMembers.filter((member) => hasSkill(member, "communication"))
+console.log("les membres avec Communication skills : ")
+console.table(communicationMembers)
+
+
+const nomAffichageMembre = crewMembers.map(getDisplayName)
+console.log(nomAffichageMembre)
