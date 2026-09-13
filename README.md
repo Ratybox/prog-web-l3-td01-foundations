@@ -6,36 +6,36 @@ Programmation Web - L3 MIASHS - 2026 / 2027
 - Nom : **Badache**
 - Adresse mail universitaire : **radhi.badache6@univ-lorraine.etu**
 - Groupe de TD : **G1**
+- Dépôt GitHub : [prog-web-l3-td01-foundations](https://github.com/Ratybox/prog-web-l3-td01-foundations)
 
 ## Exercices réalisés
 
-1. Recenser les équipes d'exploration (1.1, 1.2, 1.3 — `console.table(teams)` restant à ajouter)
-2. **à compléter**
-3. **à compléter**
-4. **à compléter**
-5. **à compléter**
-6. **à compléter**
+1. Recenser les équipes d'exploration (1.1, 1.2, 1.3 et les vérifications)
+2. Constituer l'équipage (2.1, 2.2, 2.3 et le point de contrôle)
+3. Préparer les fiches de l'équipage (3.1, 3.2, 3.3 et le point de contrôle)
+4. Mettre à jour les collaborations sans mutation (4.1, 4.2, 4.3, 4.4)
+5. Décrire l'état d'une future interface (5.1, 5.2, 5.3)
+6. Lire et utiliser un générique simple (6.1, 6.2, 6.3)
 
 ## Bonus réalisés
 
-1. **à compléter**
-2. **à compléter**
+1. Tests unitaires avec `bun:test` : 19 tests répartis dans `tests/crew.test.ts`, `tests/partnerships.test.ts`, `tests/mission.test.ts` et `tests/collections.test.ts`
+2. Aucun
 
 ## Exercices non réalisés
 
-1. *(exercice 1 réalisé)*
-2. Constituer l'équipage — types et données en place, fonctions `getDisplayName`, `hasSkill`, `isAvailable` et utilisations en callbacks restantes
-3. Préparer les fiches de l'équipage
-4. Mettre à jour les collaborations sans mutation
-5. Décrire l'état d'une future interface
-6. Lire et utiliser un générique simple
+1. Aucun, les six exercices du socle obligatoire sont réalisés
+2. Bonus chargement asynchrone avec Zod : non réalisé, faute de temps avant l'échéance
 
 ## Déclaration d'usage de l'IA générative
 
-- Mise en place de l'environnement (installation de Bun, `bun init`, arborescence du projet, squelette de ce README) — outil : Claude. Vérification : `bun run src/index.ts` et `bunx tsc --noEmit` exécutés sans erreur.
-- Lecture de l'énoncé et état d'avancement du travail déjà écrit (relecture, repérage des points manquants et du typage de `role`) — outil : Claude. Vérification : relecture de l'énoncé page par page et contrôle dans le code.
-- Mise en forme de ce README au format imposé — outil : Claude. Aucune réponse aux questions d'observation n'a été générée.
-- **à compléter**
+Usages réalisés avec Claude.
+
+- installation de Bun, `bun init` et arborescence du projet réalisés avec assistance. Les premiers commits portent une co-signature Claude. Vérification : `bun run src/index.ts` et `bunx tsc --noEmit` exécutés sans erreur.
+- Explications de notions, syntaxe, rôle d'une fonction, opérateurs.. Aucun code métier fourni : uniquement des pistes et des renvois à la documentation officielle TypeScript.
+- Relecture de l'énoncé et état d'avancement : repérage des points manquants et de l'erreur de typage sur `role`, qui était déclaré obligatoire au lieu d'optionnel.
+- Exercices et bonus : écrits par moi.
+- Réponses aux questions d'observation : rédigées par moi, puis relues et reformulées avec Claude.
 
 ## Réponses aux questions d'observation
 
@@ -59,9 +59,9 @@ Programmation Web - L3 MIASHS - 2026 / 2027
 3. Pour les mêmes tableaux `teams` et `crewMembers`, les fonctions écrites produisent-elles toujours les mêmes résultats ?
 ```
 
-1. Les trois : `findTeamById`, `getTeamName` et `createCrewCards`. Chacune prend ce qu'on lui passe, calcule un résultat et le renvoie. Aucune n'affiche quoi que ce soit ni ne modifie les données qu'elle lit.
-2. C'est le `console.table(crewCards)` dans `index.ts`. C'est la seule instruction qui sort du calcul pour écrire dans la console. Les fonctions de `crew.ts` se contentent de renvoyer une valeur, c'est `index.ts` qui décide de l'afficher.
-3. Oui. Elles ne dépendent que de ce qu'on leur donne et des tableaux `teams` et `crewMembers` qu'elles lisent. Il n'y a ni hasard, ni date, ni compteur gardé en mémoire entre deux appels. Tant que ces deux tableaux ne changent pas, les mêmes entrées donnent toujours les mêmes résultats.
+1. Les trois : `findTeamById`, `getTeamName` et `createCrewCards`. Chacune calcule un résultat et le renvoie, sans rien afficher ni modifier.
+2. C'est le `console.table(crewCards)` dans `index.ts`. Les fonctions de `crew.ts` se contentent de renvoyer une valeur, c'est `index.ts` qui décide de l'afficher.
+3. Oui. Il n'y a ni hasard, ni date, ni compteur gardé entre deux appels. Tant que les deux tableaux ne changent pas, les mêmes entrées donnent les mêmes résultats.
 
 ### Exercice 4
 
@@ -72,10 +72,10 @@ Programmation Web - L3 MIASHS - 2026 / 2027
 4. Que pourrait-il arriver si deux parties d'un programme partageaient le même objet et que l'une d'elles le modifiait directement ?
 ```
 
-1. **à compléter**
-2. **à compléter**
-3. **à compléter**
-4. **à compléter**
+1. Parce que `addPartner` ne modifie pas l'équipe reçue, elle en construit une nouvelle avec le spread. `!==` compare les références, pas le contenu.
+2. Seule l'équipe dont l'`id` correspond obtient une nouvelle référence. Les cinq autres sont renvoyées telles quelles par le `map` et gardent la leur. Le tableau, lui, est toujours neuf.
+3. Il suffit de comparer avec `!==` pour savoir ce qui a changé, sans regarder le contenu. Avec une mutation, l'ancien et le nouveau seraient le même objet et la comparaison ne dirait plus rien.
+4. L'autre partie verrait ses données changer sans être prévenue. Le bug serait difficile à trouver, parce que la cause se trouve ailleurs que là où il apparaît.
 
 ### Exercice 5
 
@@ -85,9 +85,9 @@ Programmation Web - L3 MIASHS - 2026 / 2027
 3. Quels états incohérents l'union discriminée rend-elle impossibles à représenter ?
 ```
 
-1. **à compléter**
-2. **à compléter**
-3. **à compléter**
+1. Elle ne charge rien. Elle reçoit un état déjà constitué et renvoie la phrase qui lui correspond.
+2. Parce que rien n'empêcherait d'avoir `isLoading: true` et un message d'erreur en même temps. L'union discriminée n'autorise qu'une forme à la fois, et `status` dit laquelle.
+3. Un succès sans `data`, une erreur sans `message`, ou un chargement qui porterait des données. C'est aussi pour ça que TypeScript refuse `state.data` avant la vérification du `status`.
 
 ### Exercice 6
 
@@ -97,9 +97,9 @@ Programmation Web - L3 MIASHS - 2026 / 2027
 3. Pourquoi le retour peut-il être `undefined` ?
 ```
 
-1. **à compléter**
-2. **à compléter**
-3. **à compléter**
+1. `T` est un paramètre de type : il représente le type des éléments du tableau qu'on passe. TypeScript le déduit à l'appel, `Team` pour `teams`, `CrewMember` pour `crewMembers`.
+2. Que le type utilisé possède bien un `id` de type `number`. Sans cette contrainte, `item.id` serait refusé.
+3. Parce que `find` peut ne rien trouver. C'est ce qui m'oblige à vérifier le résultat avant de l'utiliser, comme avec `trouverAlonzo`.
 
 ### Bilan
 
@@ -111,12 +111,29 @@ Choisissez deux fonctions écrites pendant le TD et indiquez pour chacune :
 - si elle renvoie toujours le même résultat pour les mêmes entrées.
 ```
 
-1. **à compléter**
-2. **à compléter**
+1. `getDisplayName` (dans `src/crew.ts`)
+   - Entrées et sortie : un `CrewMember` en entrée, une `string` en sortie.
+   - Modifie ses arguments : non, elle se contente de lire le membre.
+   - Effet observable : aucun, c'est `index.ts` qui affiche.
+   - Même résultat pour les mêmes entrées : oui.
+
+2. `addPartner` (dans `src/partnerships.ts`)
+   - Entrées et sortie : un `Team` et un `number` en entrée, un `Team` en sortie.
+   - Modifie ses arguments : non, elle construit une nouvelle équipe avec le spread.
+   - Effet observable : aucun.
+   - Même résultat pour les mêmes entrées : oui.
 
 ### Bonus : tests unitaires
 
-- **à compléter**
+```md
+1. Pourquoi un test unitaire évite-t-il généralement les appels réseau et les données partagées modifiables ?
+2. En quoi une fonction pure est-elle plus simple à tester ?
+3. Pourquoi faut-il vérifier à la fois le résultat retourné et l'absence de mutation de l'entrée ?
+```
+
+1. Parce qu'un test doit donner le même résultat à chaque exécution. Un appel réseau peut échouer, et une donnée partagée peut avoir été changée par un test précédent. C'est pour ça que je construis mes équipes et mes membres dans chaque test.
+2. Parce qu'elle ne dépend que de ce qu'on lui passe. Il suffit de l'appeler et de comparer la sortie, sans rien préparer avant ni nettoyer après.
+3. Parce qu'une fonction peut renvoyer le bon résultat tout en ayant modifié son entrée au passage. Le test passerait quand même, et le bug n'apparaîtrait que plus loin.
 
 ### Bonus : chargement asynchrone
 
@@ -126,4 +143,4 @@ Choisissez deux fonctions écrites pendant le TD et indiquez pour chacune :
 3. Pourquoi faut-il vérifier à la fois le résultat retourné et l'absence de mutation de l'entrée ?
 ```
 
-- **à compléter**
+- Bonus non réalisé.

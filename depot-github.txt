@@ -1,0 +1,9 @@
+TD 01 - Fondations
+Programmation Web - L3 MIASHS - 2026 / 2027
+
+Radhi Badache - Groupe de TD G1
+
+Dépôt GitHub du projet :
+https://github.com/Ratybox/prog-web-l3-td01-foundations
+
+L'historique des commits y retrace l'avancement exercice par exercice.
